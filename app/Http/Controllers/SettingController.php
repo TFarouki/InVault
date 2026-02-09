@@ -32,6 +32,8 @@ class SettingController extends Controller
         // Handle language switching
         if ($request->has('language')) {
             session(['locale' => $request->language]);
+            app()->setLocale($request->language);
+            Setting::updateOrCreate(['key' => 'language'], ['value' => $request->language]);
         }
 
         // Handle settings array

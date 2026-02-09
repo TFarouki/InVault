@@ -14,7 +14,7 @@ const form = useForm({
         phone: props.settings.phone || '',
         tax_percentage: props.settings.tax_percentage || '20',
     },
-    language: usePage().props.locale || 'fr',
+    language: props.settings.language || usePage().props.locale || 'fr',
     app_logo: null,
 });
 
@@ -24,9 +24,15 @@ const onFileChange = (e) => {
 
 const submit = () => {
     // We use a POST request to handle file uploads in Inertia
+    const currentLocale = usePage().props.locale;
     form.post(route('settings.update'), {
         preserveScroll: true,
         forceFormData: true,
+        onSuccess: () => {
+            if (form.language !== currentLocale) {
+                window.location.reload();
+            }
+        }
     });
 };
 </script>
