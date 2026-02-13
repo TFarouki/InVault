@@ -13,6 +13,10 @@ const form = useForm({
         address: props.settings.address || '',
         phone: props.settings.phone || '',
         tax_percentage: props.settings.tax_percentage || '20',
+        ice: props.settings.ice || '',
+        rc: props.settings.rc || '',
+        if: props.settings.if || '',
+        tax_number: props.settings.tax_number || '',
     },
     language: props.settings.language || usePage().props.locale || 'fr',
     app_logo: null,
@@ -80,6 +84,38 @@ const submit = () => {
                             <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">{{ $t('phone') }}</label>
                             <input 
                                 v-model="form.settings.phone"
+                                type="text"
+                                class="w-full rounded-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-blue-500/20"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">ICE</label>
+                            <input 
+                                v-model="form.settings.ice"
+                                type="text"
+                                class="w-full rounded-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-blue-500/20"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">RC (Registre de Commerce)</label>
+                            <input 
+                                v-model="form.settings.rc"
+                                type="text"
+                                class="w-full rounded-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-blue-500/20"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">IF (Identifiant Fiscal)</label>
+                            <input 
+                                v-model="form.settings.if"
+                                type="text"
+                                class="w-full rounded-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-blue-500/20"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Numéro de patente</label>
+                            <input 
+                                v-model="form.settings.tax_number"
                                 type="text"
                                 class="w-full rounded-xl border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-blue-500/20"
                             >

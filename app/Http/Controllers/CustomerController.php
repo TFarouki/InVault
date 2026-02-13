@@ -35,6 +35,7 @@ class CustomerController extends Controller
             'email' => 'nullable|email|max:255',
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string',
+            'ice' => 'nullable|string|max:50',
             'balance' => 'nullable|numeric',
         ]);
 
@@ -50,6 +51,7 @@ class CustomerController extends Controller
             'email' => 'nullable|email|max:255',
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string',
+            'ice' => 'nullable|string|max:50',
             'balance' => 'nullable|numeric',
         ]);
 

@@ -107,4 +107,17 @@ class SaleController extends Controller
             'settings' => $settings
         ]);
     }
+
+    public function destroy(Sale $sale)
+    {
+        DB::transaction(function () use ($sale) {
+            foreach ($sale->items as $item) {
+                Product::find($item->product_id)->increment('stock', $item->quantity);
+            }
+            $sale->items()->delete();
+            $sale->delete();
+        });
+
+        return redirect()->route('sales.index')->with('success', __('Sale deleted successfully.'));
+    }
 }

@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('terminal_id')->nullable();
-            $table->timestamp('start_time');
+            $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
             $table->decimal('start_cash', 10, 2)->default(0);
             $table->decimal('end_cash', 10, 2)->nullable();

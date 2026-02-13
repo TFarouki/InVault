@@ -80,4 +80,17 @@ class PurchaseController extends Controller
             return redirect()->route('purchases.index')->with('success', __('Purchase completed successfully.'));
         });
     }
+
+    public function destroy(Purchase $purchase)
+    {
+        DB::transaction(function () use ($purchase) {
+            foreach ($purchase->items as $item) {
+                Product::find($item->product_id)->decrement('stock', $item->quantity);
+            }
+            $purchase->items()->delete();
+            $purchase->delete();
+        });
+
+        return redirect()->route('purchases.index')->with('success', __('Purchase deleted successfully.'));
+    }
 }

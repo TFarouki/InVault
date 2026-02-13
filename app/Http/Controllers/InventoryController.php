@@ -19,9 +19,7 @@ class InventoryController extends Controller
             $query->where('name', 'like', "%{$search}%")
                 ->orWhere('code', 'like', "%{$search}%");
         })
-            ->with(['stockMovements' => function ($query) {
-            $query->latest()->take(5);
-        }])
+            ->latest()
             ->paginate(15)
             ->withQueryString();
 
